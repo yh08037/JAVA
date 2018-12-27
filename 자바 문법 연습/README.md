@@ -4,6 +4,7 @@
 
 <details><summary>예제1. HelloWorld.java</summary>
 <p>
+<hr>
 
 ## 예제1. HelloWorld.java
 
@@ -49,11 +50,12 @@ main()메소드는 String[] args 라는 매개변수를 가집니다. 매개변�
 System 클래스는 자바에서 기본적으로 제공하는 클래스입니다. 이 클래스의 메소드 중 하나인 println()은 값을 출력하고 줄바꿈을 하지만,
 또다른 메소드인 print()는 값을 출력하고 줄바꿈을 하지 않습니다.
 
-</p>
-</details>
+<hr>
+</p></details>
 
 <details><summary>예제2. Add2.java</summary>
 <p>
+<hr>
 
 ## 예제2. Add2.java
 
@@ -78,6 +80,7 @@ public class Add2 {
 }
 ```
 
+<hr>
 </p></details>
 
 
