@@ -4,17 +4,17 @@ class Per {
 	int age;
 	String name;
 	
-	// »ý¼ºÀÚÀÇ ¹®¹ýÀû Æ¯Â¡
-	// ¸Þ¼Òµå¿Í À¯»çÇÏ³ª ¸®ÅÏÇüÀÌ ¾øÀ½
-	// »ý¼ºÀÚÀÇ ÀÌ¸§Àº Å¬·¡½º ¸í°ú µ¿ÀÏÇØ¾ßÇÔ
+	// ìƒì„±ìžì˜ ë¬¸ë²•ì  íŠ¹ì§•
+	// ë©”ì†Œë“œì™€ ìœ ì‚¬í•˜ë‚˜ ë¦¬í„´í˜•ì´ ì—†ìŒ
+	// ìƒì„±ìžì˜ ì´ë¦„ì€ í´ëž˜ìŠ¤ ëª…ê³¼ ë™ì¼í•´ì•¼í•¨
 	
-	// ! »ý¼ºÀÚÀÇ °¡Àå Å« ¸ñÀûÀº ¸â¹öº¯¼ö ÃÊ±âÈ­ !
-	// ¸Å°³º¯¼ö°¡ ¾ø´Â »ý¼ºÀÚ¸¦ µðÆúÆ® »ý¼ºÀÚ¶ó°í ÇÔ
-	// µðÆúÆ® »ý¼ºÀÚ´Â »ý·«ÇÒ ¼ö ÀÖÀ½
+	// ! ìƒì„±ìžì˜ ê°€ìž¥ í° ëª©ì ì€ ë©¤ë²„ë³€ìˆ˜ ì´ˆê¸°í™” !
+	// ë§¤ê°œë³€ìˆ˜ê°€ ì—†ëŠ” ìƒì„±ìžë¥¼ ë””í´íŠ¸ ìƒì„±ìžë¼ê³  í•¨
+	// ë””í´íŠ¸ ìƒì„±ìžëŠ” ìƒëžµí•  ìˆ˜ ìžˆìŒ
 	
-	// »ý¼ºÀÚ ¿À¹ö·Îµù °¡´É
+	// ìƒì„±ìž ì˜¤ë²„ë¡œë”© ê°€ëŠ¥
 	public Per() {
-		this("±è±æµ¿", 25);
+		this("ê¹€ê¸¸ë™", 25);
 	}
 	public Per(int a, String n) {
 		this(n, a);
@@ -23,16 +23,16 @@ class Per {
 		age = a;
 		name = n;
 	}
-	// this()¸¦ ÅëÇØ »ý¼ºÀÚ ¿À¹ö·ÎµùÇÒ ¶§ Áßº¹µÇ´Â ÄÚµå¸¦ Á¦°Å!!!
-	// this() ÇöÀç Å¬·¡½ºÀÇ »ý¼ºÀÚ È£Ãâ
-	// this(), super() µÑ´Ù »ý¼ºÀÚÀÇ Ã¹¹øÂ° ÁÙ¿¡¼­¸¸ »ç¿ë °¡´É!!!
+	// this()ë¥¼ í†µí•´ ìƒì„±ìž ì˜¤ë²„ë¡œë”©í•  ë•Œ ì¤‘ë³µë˜ëŠ” ì½”ë“œë¥¼ ì œê±°!!!
+	// this() í˜„ìž¬ í´ëž˜ìŠ¤ì˜ ìƒì„±ìž í˜¸ì¶œ
+	// this(), super() ë‘˜ë‹¤ ìƒì„±ìžì˜ ì²«ë²ˆì§¸ ì¤„ì—ì„œë§Œ ì‚¬ìš© ê°€ëŠ¥!!!
 	
 }
 
 class Stu extends Per{
 	int id;
 	public Stu(int a, String n, int i){
-		super(n, a);	// ¾Æ·¡ÀÇ Áßº¹µÇ´Â ÄÚµå¸¦ Á¦°Å!!!!
+		super(n, a);	// ì•„ëž˜ì˜ ì¤‘ë³µë˜ëŠ” ì½”ë“œë¥¼ ì œê±°!!!!
 		id = i;
 //		age = a;
 //		name = n;
@@ -43,8 +43,8 @@ class Stu extends Per{
 public class ConstructorEx {
 	
 	public static void main(String[] args){
-		Per p = new Per(); // »ý¼ºÀÚ È£Ãâ
-		// Å¬·¡½º°¡ °´Ã¼È­ µÉ ¶§ »ý¼ºÀÚ°¡ ´Ü ÇÑ¹ø È£ÃâµÊ!!
+		Per p = new Per(); // ìƒì„±ìž í˜¸ì¶œ
+		// í´ëž˜ìŠ¤ê°€ ê°ì²´í™” ë  ë•Œ ìƒì„±ìžê°€ ë‹¨ í•œë²ˆ í˜¸ì¶œë¨!!
 		
 	}
 	

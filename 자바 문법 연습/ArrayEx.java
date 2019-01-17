@@ -2,7 +2,7 @@
 public class ArrayEx {
 
 	public static void main(String[] args) {
-		// ÀÚ¹Ù¿¡¼­ »ç¿ëµÇ´Â ¹è¿­ ¹®¹ı 3°¡Áö
+		// ìë°”ì—ì„œ ì‚¬ìš©ë˜ëŠ” ë°°ì—´ ë¬¸ë²• 3ê°€ì§€
 		
 		// [1]
 		int[] x = {10, 20, 30};
@@ -17,7 +17,7 @@ public class ArrayEx {
 		int[] z = new int[]{10, 20, 30};
 		
 		
-		// 2Â÷¿ø ¹è¿­ÀÇ µ¿ÀûÇÒ´ç
+		// 2ì°¨ì› ë°°ì—´ì˜ ë™ì í• ë‹¹
 		int[][] k = new int[2][];
 		k[0] = new int[3];
 		k[1] = new int[]{10, 20}; //new int[2]

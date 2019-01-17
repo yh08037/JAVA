@@ -4,7 +4,7 @@ public class SwitchEx {
 	public static void main(String[] args) {
 		
 		int x = 0;
-		// StringÇüÀÇ ÀÚ·á¸¦ switchÀÇ º¯¼ö·Î »ç¿ë °¡´É
+		// Stringí˜•ì˜ ìë£Œë¥¼ switchì˜ ë³€ìˆ˜ë¡œ ì‚¬ìš© ê°€ëŠ¥
 		switch (x) {
 		case 0 :
 			System.out.println("x = 0");

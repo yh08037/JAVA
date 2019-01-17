@@ -9,16 +9,16 @@ public class IFEx {
 		y = y + 2; //y+=2;
 		
 		if (x>100 && (y+=100)>10){
-			System.out.println("Âü");
+			System.out.println("ì°¸");
 		}
 		
 		System.out.println("y == " + y);
 		
 		if ( x > y ) {
-			System.out.println("x°¡ Å©´Ù");
+			System.out.println("xê°€ í¬ë‹¤");
 		}
 		else {
-			System.out.println("y°¡ Å©´Ù");
+			System.out.println("yê°€ í¬ë‹¤");
 		}
 
 	}
