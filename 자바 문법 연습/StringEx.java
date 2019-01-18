@@ -13,6 +13,11 @@ public class StringEx {
         // 만약 똑같은 문자열이 먼저 만들어져 있다면
         // 그 String 객체의 주솟값을 가져와 저장한다.
 
+//      String str1 = new String("ABC");
+//      String str2 = new String("ABC");
+        // 위와 같이 명시적으로 String 객체를 생성했다면
+        // 아래 str1 == str2 은 "다르다"를 출력할 것이다.
+
 //      if ( str1 == str2 ){    // 이는 문자열의 주솟값을 비교하는 코드
         if ( str1.equals(str2) ){   // 문자열 값 비교를 위해 사용
             System.out.println("같다");
