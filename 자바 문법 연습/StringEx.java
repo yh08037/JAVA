@@ -15,6 +15,7 @@ public class StringEx {
 
 //      String str1 = new String("ABC");
 //      String str2 = new String("ABC");
+
         // 위와 같이 명시적으로 String 객체를 생성했다면
         // 아래 str1 == str2 은 "다르다"를 출력할 것이다.
 
