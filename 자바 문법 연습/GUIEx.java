@@ -14,8 +14,13 @@ class MyListener implements ActionListener {
     }
 }
 
+// CallBack Method : 프로그래머가 호출하지 않고 시스템이 호출하는 메소드
+// 그러나 구현은 프로그래머가 함 -> 메소드가 언제 호출되는지 정확히 파악할 것!
+
 
 class CalGUIB extends JFrame {
+
+    CalLogic logic;
 
     CalGUIB() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
