@@ -1,6 +1,13 @@
 import java.awt.image.DataBufferDouble;
 import java.io.*;
 
+// 자바 I/O 클래스
+// -대표 클래스
+// Reader : 문자 단위로 읽기 기능 제공, 추상 클래스
+// Writer : 문자 단위로 쓰기 기능 제공, 추상 클래스
+
+
+
 public class IOEx {
 
     public static void main(String[] args) throws IOException {
