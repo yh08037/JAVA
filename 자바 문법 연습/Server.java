@@ -13,9 +13,17 @@ public class Server {
         ServerSocket ss = new ServerSocket(8888);   // port 지정
 
         while (true) {
+        	// accept() 메소드 역할
+        	// (1) 클라이언트 접속 대기
+        	// (2) 클라이언트 접속시 해당 클라이언트와 연결된 Socket을 리턴
+        	// !! blocking method
             Socket server = ss.accept();
 
-            InputStream is = server.getInputStream();
+            InputStream is = server.getInputStream();	// !!중요!! 기억해주길...
+            // class A{}
+            // class B extends A{}
+            // A x = new B(); 가능!! <= 상속관계 (is-a관계)            
+            
             byte[] b = new byte[1024];
             is.read(b);
             String result = new String(b);
