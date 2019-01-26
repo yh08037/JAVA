@@ -18,6 +18,7 @@ class MyListener implements ActionListener {
 // 그러나 구현은 프로그래머가 함 -> 메소드가 언제 호출되는지 정확히 파악할 것!
 
 
+// UI 배치관리자를 사용
 class CalGUIB extends JFrame {
 
     CalLogic logic;
@@ -98,6 +99,7 @@ class CalGUIB extends JFrame {
 
 }
 
+// 배치관리자 없이 픽셀로 위치 지정
 class CalGUI {
     JFrame frame;    // = new Frame(); 권고 X -> 멤버 변수 초기화는 생성자로 하라!
 
