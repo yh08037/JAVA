@@ -14,7 +14,7 @@ class MyThreadOne extends Thread {
 class MyThreadTwo implements Runnable {
 
     @Override
-    public void run() {// callback 메소eadOne extends Thread {
+    public void run() {// CallBack 메소드
         // 현재 Thread가 수행해야할 작업을 코딩
         for (int i = 100; i < 1000; i += 1) {
             System.out.println(i);
