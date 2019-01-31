@@ -1,33 +1,82 @@
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+
+// ¸ÖÆ¼Ã¤ÆÃ ¼­¹ö thread ±â´É
+// (1) Å¬¶óÀÌ¾ğÆ®¿¡¼­ º¸³»¿À´Â ¸Ş½ÃÁö¸¦ Áö¼ÓÀûÀ¸·Î ¼ö½Å
+// (2) ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¼ö½ÅµÈ ¸Ş½ÃÁö¸¦ Àü¼Û
+class ServerThread extends Thread {
+	
+	Socket server;
+	InputStream is;
+	OutputStream os;
+	
+	public ServerThread(Socket server) throws IOException {
+		this.server = server;
+		is = server.getInputStream();
+		os = server.getOutputStream();
+	}
+	
+	public void run() {
+		while (true) {
+			// (1) Å¬¶óÀÌ¾ğÆ®¿¡¼­ º¸³»¿À´Â ¸Ş½ÃÁö¸¦ Áö¼ÓÀûÀ¸·Î ¼ö½Å
+			byte[] b = new byte[256];
+			try {
+				is.read(b);
+				System.out.println(new String(b).trim());
+			} catch (IOException e) {
+				System.out.println("¸Ş½ÃÁö ¼ö½Å ¿À·ù");
+				e.printStackTrace();
+			}
+			
+			// (2) ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¼ö½ÅµÈ ¸Ş½ÃÁö(byte[] b)¸¦ Àü¼Û
+			// ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡¼¼ ¸Ş½ÃÁö¸¦ º¸³»±â À§ÇØ °¢ Å¬¶óÀÌ¾ğÆ®¿Í ¿¬°áµÈ Á¾ÀÌÄÅ ÇÊ¿ä
+			
+//			for (int i = 0; i < Server.total_socket.size(); i++) {
+//				Socket temp = Server.total_socket.get(i);
+//				temp.getOutputStream().write(b);
+//			}
+			for (Socket s:Server.total_socket) {
+				try {
+					s.getOutputStream().write(b);
+				} catch (IOException e) {
+					System.out.println("¸Ş½ÃÁö ¼Û½Å ¿À·ù");
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+}
 
 public class Server {
-
-    public static void main(String[] args) throws IOException {
-
-        System.out.println("[Server Start]");
-
-        // ì„œë²„ íŒŒíŠ¸ì—ì„œ ì‚¬ìš©í•  ì¢…ì´ì»µ(Socket) í´ë˜ìŠ¤ ìƒì„± ë°©ë²•
-        ServerSocket ss = new ServerSocket(8888);   // port ì§€ì •
-
-        while (true) {
-        	// accept() ë©”ì†Œë“œ ì—­í• 
-        	// (1) í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ëŒ€ê¸°
-        	// (2) í´ë¼ì´ì–¸íŠ¸ ì ‘ì†ì‹œ í•´ë‹¹ í´ë¼ì´ì–¸íŠ¸ì™€ ì—°ê²°ëœ Socketì„ ë¦¬í„´
-        	// !! blocking method
-            Socket server = ss.accept();
-
-            InputStream is = server.getInputStream();	// !!ì¤‘ìš”!! ê¸°ì–µí•´ì£¼ê¸¸...
-            // class A{}
-            // class B extends A{}
-            // A x = new B(); ê°€ëŠ¥!! <= ìƒì†ê´€ê³„ (is-aê´€ê³„)            
-            
-            byte[] b = new byte[1024];
-            is.read(b);
-            String result = new String(b);
-            System.out.println(result.trim());
-        }
-    }
+	
+	// °¢ Client¿Í ¿¬°áµÈ Á¾ÀÌÄÅ ÀúÀå
+	static ArrayList<Socket> total_socket = new ArrayList<Socket>();
+	
+	
+	public static void main(String[] args) throws IOException {
+		
+		System.out.println("[Server Start]");
+		
+		// Á¾ÀÌÄÅ ¿ªÇÒÀ» ÇÏ´Â Socket °´Ã¼ »ı¼º
+		ServerSocket s = new ServerSocket(8888);
+		
+		while (true) {
+			// (1)Å¬¶óÀÌ¾ğÆ®ÀÇ Á¢¼ÓÀ» ´ë±â  (2)Å¬¶óÀÌ¾ğÆ® Á¢¼Ó½Ã ¸ÅÄªµÇ´Â Socket »ı¼º
+			Socket server = s.accept();	
+			
+			// »ı¼ºµÈ Á¾ÀÌÄÅ ÀúÀå
+			total_socket.add(server);
+			
+			// ÇöÀç Á¢¼ÓµÈ Å¬¶óÀÌ¾ğÆ®¸¦ ´ã´çÇÒ Thread »ı¼º ÈÄ start
+			new ServerThread(server).start();
+			
+		}
+		
+	}
+	
 }

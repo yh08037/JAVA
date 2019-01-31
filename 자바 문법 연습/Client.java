@@ -1,64 +1,127 @@
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-class ClientGUI extends JFrame{
-	JTextField jf;
 
-	ActionListener myListener = new ActionListener() {	//ìµëª… ë‚´ë¶€ í´ë˜ìŠ¤
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// í´ë¼ì´ì–¸íŠ¸ì„¸ì–´ ì‚¬ìš©ë  ì¢…ì´ì»µ(socket) ìƒì„± ë°©ë²•
-		    try {
-			    Socket client = new Socket("155.230.57.60", 8888);
-
-		        OutputStream os = client.getOutputStream();
-		        String msg = jf.getText();
-		        os.write(msg.getBytes());
-		        jf.setText("");	// jf ì´ˆê¸°í™”
-				}catch(Exception ee) {
-						System.out.println("ì„œë²„ ë°ì´í„° ì „ì†¡ ì¤‘ ì˜ˆì™¸ ë°œìƒ");
+class ClientGUI extends JFrame {
+	
+	JTextField jf;	// ÇÁ·¹ÀÓ
+	JButton con;	// Á¢¼Ó ¹öÆ°
+	JTextArea ja;	// ¿©·¯ÁÙ Ç¥Çö
+	Socket client;
+	InputStream is;
+	OutputStream os;
+	String nick;
+	
+	class ClientThread extends Thread {
+		int count = 0;
+		public void run() {
+			// Áö¼ÓÀûÀ¸·Î ¸Ş¼¼Áö ¼ö½Å
+			// ¼ö½ÅµÈ ¸Ş¼¼Áö ja¿¡ º¸¿©ÁÖ±â
+			while (true) {
+				byte[] b = new byte[256];
+				try {
+					is.read(b);
+					String result = new String(b);
+					count++;
+	//				if (count % 10 == 0) {
+	//					ja.setText("");
+	//					count = 0;
+	//				};
+					ja.append(result.trim()+'\n');
+				} catch (IOException e) {
+					System.out.println("¸Ş¼¼Áö ¼ö½Å ¿À·ù");
+					e.printStackTrace();
 				}
+			}
 		}
-	};
-
-	// ActionlistenerëŠ” ì¸í„°í˜ì´ìŠ¤ì´ë‹¤!!
-	// interface A{}
-	// class B implements A{}
-	// A x = new B(); ê°€ëŠ¥!!!
-
-	ClientGUI() {
-		super("ì±„íŒ… Client");
-		jf = new JTextField(10);
-		jf.addActionListener(myListener);
+	}
+		
+	
+	class MyListener implements ActionListener {
+		
+		public void actionPerformed(ActionEvent arg0) {
+			
+			if (arg0.getActionCommand().equals("Á¢¼Ó")) {
+				// 'Á¢¼Ó' ¹öÆ°ÀÌ Å¬¸¯ µÇ¾úÀ» °æ¿ì
+				try {
+					nick = JOptionPane.showInputDialog("´Ğ³×ÀÓÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+//					client = new Socket("155.230.57.60", 8888);
+					client = new Socket("127.0.0.1", 8888);
+					jf.setEditable(true);
+					con.setEnabled(false);
+					// ¼­¹ö Á¢¼Ó ¼º°ø
+					// -> ¼­¹ö¿¡¼­ º¸³»¿À´Â ¸Ş½ÃÁö Áö¼ÓÀûÀ¸·Î ¼ö½Å
+					is = client.getInputStream();
+					os = client.getOutputStream();
+				
+					new ClientThread().start();
+					
+				} catch (IOException e) {
+					System.out.println("¼­¹ö Á¢¼Ó ¿À·ù ¹ß»ı");
+					e.printStackTrace();
+				}
+			}else {
+				// JTextFiled¿¡ ¿£ÅÍÅ° ÀÔ·ÂÀÌ µÇ¾úÀ» °æ¿ì
+				String msg = "["+nick+"]"+ jf.getText();
+				try {
+					os.write(msg.getBytes());
+					os.flush();	// flush()´Â ½À°üÀûÀ¸·Î ½áÁÖ´Â °ÍÀÌ ÁÁ´Ù!
+					jf.setText("");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	
+	
+	ClientGUI(String title) {
+		super(title);	// »óÀ§ Å¬·¡½º(JFrame)ÀÇ Á¦¸ñ ¼³Á¤
+		jf = new JTextField(15);
+		jf.setEditable(false);
+		con = new JButton("Á¢¼Ó");
+		ja = new JTextArea(15, 15);
+		
+		MyListener m = new MyListener();
+		con.addActionListener(m);
+		jf.addActionListener(m);
+		
+		FlowLayout layout = new FlowLayout();
+		setLayout(layout);
+		
 		add(jf);
+		add(con);
+		add(ja);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(200, 100);
 		setLocation(300, 300);
+		setSize(200, 300);
 		setVisible(true);
 	}
 }
+	
 
 
 public class Client {
-
-    public static void main(String[] args) throws UnknownHostException, IOException{
-
-    	new ClientGUI();
-
-
-//    	// í´ë¼ì´ì–¸íŠ¸ì„¸ì–´ ì‚¬ìš©ë  ì¢…ì´ì»µ(socket) ìƒì„± ë°©ë²•
-//        Socket client = new Socket("155.230.57.60", 8888);
-//
-//        OutputStream os = client.getOutputStream();
-//        String msg = "ë©”ì„¸ì§€ ë‚´ìš©";
-//        os.write(msg.getBytes());
-    }
-
+	
+	public static void main(String[] args) throws IOException, UnknownHostException{
+		
+		// Á¾ÀÌÄÅ ¿ªÇÒÀ» ÇÏ´Â Socket °´Ã¼ »ı¼º
+//		Socket client = new Socket("155.230.57.11", 8888);
+		new ClientGUI("Ã¤ÆÃ");
+	}
+	
 }
