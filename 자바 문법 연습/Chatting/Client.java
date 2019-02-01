@@ -35,10 +35,10 @@ class ClientGUI extends JFrame {
 					is.read(b);
 					String result = new String(b);
 					count++;
-	//				if (count % 10 == 0) {
-	//					ja.setText("");
-	//					count = 0;
-	//				};
+					if (count % 10 == 0) {
+						ja.setText("");
+						count = 0;
+					};
 					ja.append(result.trim()+'\n');
 				} catch (IOException e) {
 					System.out.println("메세지 수신 오류");
@@ -57,10 +57,11 @@ class ClientGUI extends JFrame {
 				// '접속' 버튼이 클릭 되었을 경우
 				try {
 					nick = JOptionPane.showInputDialog("닉네임을 입력해 주세요");
-//					client = new Socket("155.230.57.60", 8888);
-					client = new Socket("127.0.0.1", 8888);
+					client = new Socket("155.230.57.60", 8888);
+//					client = new Socket("127.0.0.1", 8888);
 					jf.setEditable(true);
 					con.setEnabled(false);
+//					jf.requestFocus();
 					// 서버 접속 성공
 					// -> 서버에서 보내오는 메시지 지속적으로 수신
 					is = client.getInputStream();
