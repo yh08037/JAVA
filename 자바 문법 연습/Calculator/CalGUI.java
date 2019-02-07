@@ -22,8 +22,8 @@ class MyCalGUI extends JFrame {
                     break;
                 case "=":
                     str = jf.getText();
-                    logic = new CalLogic();
-                    jf.setText(logic.cal(str));
+//                    logic = new CalLogic();
+//                    jf.setText(logic.cal(str));
                     break;
             }
         }
