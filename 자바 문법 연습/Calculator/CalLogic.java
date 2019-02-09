@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class CalLogic {
+class CalLogic {
 
     String evaluate(String str) {
         return evalPostfix(convertNotation(str))+"";
@@ -13,7 +13,7 @@ public class CalLogic {
         Stack<String> opStack = new Stack<>();
         Queue<String> result = new LinkedList<>();
         StringTokenizer stk = new StringTokenizer(str, "()+-*/", true);
-        String temp = "";
+        String temp;
 
         while (stk.hasMoreTokens()) {
             temp = stk.nextToken();
@@ -71,9 +71,10 @@ public class CalLogic {
         }
     }
 
-    private int evalPostfix(Queue<String> postfixQueue) {
+    // 후치연산식을 계산하여 값을 반환한다.
+    private double evalPostfix(Queue<String> postfixQueue) {
 
-        Stack<Integer> evalStack = new Stack<>();
+        Stack<Double> evalStack = new Stack<>();
 
         for (String s : postfixQueue) {
             switch (s) {
@@ -88,18 +89,15 @@ public class CalLogic {
                     evalStack.push(evalStack.pop() * evalStack.pop());
                     break;
                 case "/":
-                    int num1 = evalStack.pop();
-                    int num2 = evalStack.pop();
+                    double num1 = evalStack.pop();
+                    double num2 = evalStack.pop();
                     evalStack.push(num2 / num1);
                     break;
                 default:
                     // 숫자를 만나면 숫자는 스택에 푸시한다.
-                    evalStack.push(Integer.parseInt(s));
+                    evalStack.push(Double.parseDouble(s));
             }
         }
         return evalStack.peek();
     }
-
-
-
 }
