@@ -15,15 +15,14 @@ class MyCalGUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             String result = e.getActionCommand();
-
             switch (result) {
                 case "c":
                     jf.setText("c");
                     break;
                 case "=":
                     str = jf.getText();
-//                    logic = new CalLogic();
-//                    jf.setText(logic.cal(str));
+                    logic = new CalLogic();
+                    jf.setText(logic.evaluate(str));
                     break;
             }
         }

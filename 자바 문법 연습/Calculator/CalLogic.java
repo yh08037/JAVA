@@ -1,79 +1,105 @@
-import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
-class Stack extends ArrayList<String> {
-    String pop() {
-        return this.remove(this.size()-1);
+public class CalLogic {
+
+    String evaluate(String str) {
+        return evalPostfix(convertNotation(str))+"";
     }
-}
 
-class MyCalLogic {
-//    String cal(String str) {
-//
-//        return result+"";
-//    }
-
-    ArrayList<String> convertNotation(String str) {
-        Stack operatorStack = new Stack();
+    private Queue<String> convertNotation(String str) {
+        Stack<String> opStack = new Stack<>();
+        Queue<String> result = new LinkedList<>();
         StringTokenizer stk = new StringTokenizer(str, "()+-*/", true);
-        ArrayList<String> result = new ArrayList<>();
         String temp = "";
 
         while (stk.hasMoreTokens()) {
             temp = stk.nextToken();
             switch (temp) {
                 case "(":
-                    operatorStack.add(temp);
+                    // "("를 만나면 스택에 푸시한다.
+                    opStack.push(temp);
                     break;
 
                 case ")":
-                    String tmp = "";
-                    while (true) {
-                        tmp = operatorStack.pop();
-                        if (tmp.equals("(")) {
-                            break;
-                        } else {
-                            result.add(tmp);
-                        }
+                    // ")"를 만나면 스택에서 "("가 나올 때까지 팝하여 저장하고, "("는 팝하여 버린다.
+                    while (!opStack.peek().equals("(")) {
+                        result.offer(opStack.pop());
                     }
+                    opStack.pop();    //opStack 에서 "(" 제거
                     break;
 
                 case "+":
                 case "-":
-                    break;
-
                 case "*":
                 case "/":
+                    // 연산자를 만나면 스택에서 그 연산자보다 낮은 우선순위의 연산자를
+                    // 만날 때까지 팝하여 저장한 뒤 자신을 푸시한다.
+                    while (!opStack.empty() && opOrder(opStack.peek()) >= opOrder(temp)) {
+                        result.offer(opStack.pop());
+                    }
+                    opStack.push(temp);
                     break;
-//
-//                case "+":
-//                    result += Integer.parseInt(stk.nextToken());
-//                    break;
-//                case "-":
-//                    result -= Integer.parseInt(stk.nextToken());
-//                    break;
-//                case "*":
-//                    result *= Integer.parseInt(stk.nextToken());
-//                    break;
-//                case "/":
-//                    result /= Integer.parseInt(stk.nextToken());
-//                    break;
+
                 default:
-                    result.add(temp);
+                    // 숫자는 그냥 저장한다.
+                    result.offer(temp);
             }
         }
 
-        while (operatorStack.size() != 0) {
-            result.add(operatorStack.pop());
+        // 모든 스트링토큰이 끝나면 스택에 있는 연산자들을 모두 팝하여 저장한다.
+        while (!opStack.empty()) {
+            result.offer(opStack.pop());
         }
 
         return result;
     }
-}
 
-public class CalLogic {
-    public static void main(String[] args) {
-        MyCalLogic myCalLogic = new MyCalLogic();
-        System.out.println(myCalLogic.convertNotation("(2*(3+6/2)+2)/4+3"));
+    // 연산자들의 우선순위를 배정한다.
+    private static int opOrder(String operator) {
+        switch (operator) {
+            case "+":
+            case "_":
+                return 1;
+            case "*":
+            case "/":
+                return 2;
+            default:
+                return -1;
+        }
     }
+
+    private int evalPostfix(Queue<String> postfixQueue) {
+
+        Stack<Integer> evalStack = new Stack<>();
+
+        for (String s : postfixQueue) {
+            switch (s) {
+                // 연산자를 만나면 스택에서 팝을 두번하여 그 두 데이터로 연산한 다음 스택에 다시 저장한다.
+                case "+":
+                    evalStack.push(evalStack.pop() + evalStack.pop());
+                    break;
+                case "-":
+                    evalStack.push(-evalStack.pop() + evalStack.pop());
+                    break;
+                case "*":
+                    evalStack.push(evalStack.pop() * evalStack.pop());
+                    break;
+                case "/":
+                    int num1 = evalStack.pop();
+                    int num2 = evalStack.pop();
+                    evalStack.push(num2 / num1);
+                    break;
+                default:
+                    // 숫자를 만나면 숫자는 스택에 푸시한다.
+                    evalStack.push(Integer.parseInt(s));
+            }
+        }
+        return evalStack.peek();
+    }
+
+
+
 }
