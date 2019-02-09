@@ -99,7 +99,4 @@ public class CalLogic {
         }
         return evalStack.peek();
     }
-
-
-
 }
