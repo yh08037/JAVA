@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 public class CalLogic {
 
     String evaluate(String str) {
-        return evalPostfix(convertNotation(str))+"";
+        return evalPostfix(convertNotation(str))+"";    // this. 생략
     }
 
     private Queue<String> convertNotation(String str) {
