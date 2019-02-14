@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 
 // 배치관리자 FlowLayout 클래스 사용
-class MyCalGUI extends JFrame {
+public class CalGUI extends JFrame {
 
     CalLogic logic;
     JTextField jf;
@@ -36,7 +36,7 @@ class MyCalGUI extends JFrame {
         }
     };
 
-    MyCalGUI() {
+    CalGUI() {
 
         // UI 배치관리자
 
@@ -67,13 +67,4 @@ class MyCalGUI extends JFrame {
         this.setVisible(true);
     }
 
-}
-
-
-
-
-public class CalGUI {
-    public static void main(String[] args) {
-        new MyCalGUI();
-    }
 }
