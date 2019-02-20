@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Class and Object/Class and Object.iml" filepath="$PROJECT_DIR$/Class and Object/Class and Object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Constructor and Access Control/Constructor and Access Control.iml" filepath="$PROJECT_DIR$/Constructor and Access Control/Constructor and Access Control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Field and Method/Field and Method.iml" filepath="$PROJECT_DIR$/Field and Method/Field and Method.iml" />
+    </modules>
+  </component>
+</project>
