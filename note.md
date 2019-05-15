@@ -1,21 +1,140 @@
-### 01/14
+# 자바 문법 연습
 
-자바 개발 환경 구성
+자바의 기본적인 문법을 알아봅니다.
+
+https://codingbat.com/java
+
+https://wikidocs.net/211
+
+
+<details><summary>예제1. HelloWorld.java</summary>
+<p>
+<hr>
+
+## 예제1. HelloWorld.java
+
+```java
+public class HelloWorld {
+    public static void main(String[] args){
+        System.out.println("Hello World!");
+    }
+}
+```
+
+자바 프로그램들은 클래스들의 모임으로 구성됩니다. 필요한 클래스를 하나씩 만들어감으로써 전체 프로그램이 완성됩니다.
+일반적으로 하나의 소스 파일은 하나의 public 클래스를 포함합니다. 하나의 클래스 안에는 여러개의 메소드가 포함될 수 있으며, 하나의 메소드 안에는
+여러개의 문장이 포함될 수 있습니다.
+
+### 클래스 정의
+
+```java
+public class HelloWorld {
+    ~~~
+}
+```
+class 키워드는 HelloWorld라는 클래스의 정의를 시작한다는 것을 나타냅니다.
+
+
+public 키워드는 HelloWorld 클래스가 다른 클래스에서도 사용가능함을 나타냅니다.
+
+### 메소드 정의
+
+```java
+    public static void main(String[] args){
+        ~~~
+    }
+```
+클래스는 메소드와 변수로 이루어집니다. 메소드는 입력을 받아서 작업을 수행하고 결과를 내보내는, 클래스 내부의 함수라고 볼 수 있습니다.
+main()메소드는 특히 프로그램 실행의 시작점이 된다는 점에서 특별합니다. 모든 다른 메소드는 main()메소드로부터 호출됩니다.
+main()메소드는 String[] args 라는 매개변수를 가집니다. 매개변수란 외부의 데이터를 메소드로 전달하는 수단입니다. 또한 String은 그 데이터의 타입이
+문자열이라는 것을 나타냅니다.
+
+### 문장
+```java
+        System.out.println("Hello World!");
+```
+System 클래스는 자바에서 기본적으로 제공하는 클래스입니다. 이 클래스의 메소드 중 하나인 println()은 값을 출력하고 줄바꿈을 하지만,
+또다른 메소드인 print()는 값을 출력하고 줄바꿈을 하지 않습니다.
+
+<hr>
+</p></details>
+
+<details><summary>예제2. Add2.java</summary>
+<p>
+<hr>
+
+## 예제2. Add2.java
+
+```java
+import java.util.Scanner;   //Scanner 클래스 포함
+
+public class Add2 {
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);   //입력을 받기 위한 Scanner 객체 생성
+
+        int x, y, sum;
+
+        System.out.print("첫번째 숫자를 입력하시오: ");
+        x = input.nextInt();
+        System.out.print("두번째 숫자를 입력하시오: ");
+        y = input.nextInt();
+
+        sum = x + y;
+
+        System.out.println(sum);
+    }
+}
+```
+
+<hr>
+</p></details>
+
+
+<br>
+
+## static 키워드 : 정적 변수, 정적 메소드를 만든다
+
+### 정적 변수(static varible)
+
+한 클래스의 모든 객체들에 의하여 공유되는 변수
+
+클래스 변수(class varible) 라고도 함
+
+객체의 필드들은 인스턴스 변수(instance varible)이라고 함
+
+상수는 정적 변수로 선언( static final )하여 메모리 절약
+
+
+
+### 정적 메소드 (static method)
+
+객체가 생성되지 않은 상태에서 호출되는 메소드
+
+클래스 이름을 통하여 호출됨 ( Math.sqrt() / main() 등 )
+
+this 키워드 사용 불가 <- 참조할 인스턴스가 없기 때문
+
+정적 메소드 내에서 인스턴스 변수, 메소드 사용 불가
+
+
+
+
+
+01/14
+
+1. 자바 개발 환경 구성
 
   - 자바 설치
-    - java.sun.com 접속
 
-    - 우측 java SE 선택
+   : java.sun.com 접속
 
-    - 왼쪽 자바 아이콘 선택  
+    -> 우측 java SE 선택
+    -> 왼쪽 자바 아이콘 선택  
+    -> 라이센스 동의 후
+    -> OS에 적합한 자바 버전 다운
 
-    - 라이센스 동의 후
-
-    - OS에 적합한 자바 버전 다운
-
-      x86 - 32bit
-
-      x64 - 64bit
+       x86 - 32bit
+       x64 - 64bit
 
 
   - 편집툴(개발툴) 설치 - IDE(integrated development environment)
@@ -33,8 +152,10 @@
    : 파일에 확장자가 .java
    : 파일명이 클래스명과 동일
 
-   : 하나의 파일에 두개이상의 클래스 생성이 가능
-     (public class 명이 파일명이 되어야 함)
+   : 하나의 파일에 두개이상의
+     클래스 생성이 가능
+     (public class 명이 
+      파일명이 되어야 함)
 
 
 * 자바 컴파일 및 실행
@@ -74,11 +195,19 @@
 
   - 기본자료형만 값이 넘어감
 
-  - 기존자료형 이외에 나머지는 모두 주소값이 넘어감
+  - 기존자료형 이외에 나머지는 몽조리(!) 주소값이 넘어감
 
 
 
-### 01/15
+
+* dropbox 공유링크
+https://www.dropbox.com/sh/k6ighqfx77zm4wy/AADoXEHar5zXC1q42tNw41IUa?dl=0
+
+https://bit.ly/2M5YkTa
+
+
+
+01/15
 
 1. OOP(객체지향형 프로그래밍)는 왜 필요??
 
@@ -100,15 +229,15 @@
   자바에서는 메모리에 변수나 메소드를 올려줄때 
   
   해당 되는 변수,메소드가 포함된 클래스를 통채로 올려줌
-  
+   
  - 객체(Object)는 무엇?
-    => 메모리에 올라간 클래스!!  
+  => 메모리에 올라간 클래스!!  
 
 
 2. static  
 
    프로그램이 시작될 때 제일 처음 스스로 메모리에 단 한번 올라가며
-   프로그램이 끝날 때까지 존재
+   프로그램이 끝날때 까지 존재
 
    : 대표적인 static method => main method
 
@@ -119,35 +248,28 @@
   - public 접근제한자를 가지는 getXXX, setXXX 메소드 구현
 
 
-
-### 01/16
+01/16
 
 1. 조건문
 
-   ``` java
-   if (조건문) {
-       [참일 경우 실행]
-   } else {
-       [거짓일 경우 실행]
-   } 
-   ```
+   : if (조건문) {
+	[참일 경우 실행]
+    }else {
+        [거짓일 경우 실행]
+    } 
 
    : switch ~ case 문
 
-    ```java
-   int x = 10;
-   
-   switch( x ) {
-   	case 10:
-   		[10일 경우 실행]
-   		break;
-       case 9:
-           [9일 경우 실행]
-           break;
-   }
-    ```
+    int x = 10;
 
-   
+    switch( x ) {
+      case 10:
+       [10일 경우 실행]
+       break;
+      case 9:
+       [9일 경우 실행]
+       break;
+    }
 
   * switch ~case 문의 경우 지정된 값이 특정 case에 해당되면 
     하위 case를 모두 실행, 따라서 특정 case만 실행 후 종료 하기위해 
@@ -169,8 +291,8 @@
 
 
 3. 반복문
-    : for
-    : while, do~while 
+  : for
+  : while, do~while 
 
 4. 배열
 
@@ -188,8 +310,8 @@
 
 
   * 정의방법
-    접근제한자   리턴형    메소드이름  ( 파라미터)  {
-    }
+  접근제한자   리턴형    메소드이름  ( 파라미터)  {
+  }
 
   public  int  add(int x, int y) {
        int result = x + y;
@@ -206,7 +328,7 @@
 
 
 
-### 01/17
+01/17
 
 1. 메소드 오버로딩 (Method Overloading) 
 
@@ -223,9 +345,9 @@
 
 
 3. 클래스의 3가지 구성요소
-    (1) member variable
-    (2) method
-    (3) Constructor
+  (1) member variable
+  (2) method
+  (3) Constructor
 
 4. 생성자(Constructor)
 
@@ -251,11 +373,12 @@
   - 상위 클래스로부터 물려받은 메소드를 재정의
 
   - 문법적으로 물려받은 메소드를 그대로 사용해야 함
-      (접근제한자는 상위보다 넓은 범위에 접근제한자로 변경이 가능)
+   (접근제한자는 상위보다 넓은 범위에 접근제한자로 변경이 가능)
 
 
 
-### 01/18
+
+01/18
 
 1. String 클래스의 2가지 특징
 
@@ -271,14 +394,14 @@
       //최종적으로 "ABC", "ABCD", "ABCDE" 세 개가 메모리에 존재
 
   * 자바에서는 문법적으로 객체 할당(new)은 존재하나
-      반대 개념인 객체해제는 문법적으로 존재하지 않음
+   반대 개념인 객체해제는 문법적으로 존재하지 않음
     대신 GC(Gabage Collector)가 불필요한 메모리 자원을 해제해준다
-
+ 
   * 따라서 String class를 변경이 빈번하게 일어나는 문자열 저장을
-      위해 사용하면 성능저하 또는 불필요한 메모리릭 문제가 생길 수 있음
+   위해 사용하면 성능저하 또는 불필요한 메모리릭 문제가 생길 수 있음
     하드웨어 자원이 PC에 비해 상대적으로 부족한 모바일에서는
-      문자열 변경이 자주 일어나는 경우에 String class를 사용하지 말것
-      대신 StringBuffer class등을 사용할 것
+   문자열 변경이 자주 일어나는 경우에 String class를 사용하지 말것
+   대신 StringBuffer class등을 사용할 것
 
 
 2. StringTokenizer class
@@ -320,7 +443,8 @@
 
 
 
-### 01/21
+
+01/21
 
 1. 지금까지의 줄거리?!
 
@@ -331,7 +455,7 @@
   - 제어문(if), 반복문(for)
   - 배열 
   - 클래스의 구성요소
-      (생성자,변수,메소드)
+   (생성자,변수,메소드)
   - overloading / overriding
   - 자바의 3대 생략 요소
   - 상속(extends), super, this
@@ -343,12 +467,12 @@
 2.  abstract method / abstract class
 
   - 추상화 메소드 
-      : 기능이 없는 메소드
+   : 기능이 없는 메소드
     ex) abstract public void add();
 
   - 추상화 클래스
-      : 한 개 이상의 추상화 메소드를 가지는 클래스
-      : 객체화가 불가능
+   : 한 개 이상의 추상화 메소드를 가지는 클래스
+   : 객체화가 불가능
 
    : 추상화 클래스를 상속받은 클래스에서는
      추상화 메소드 오버라이딩이 강제된다.
@@ -394,11 +518,11 @@
     GridBagLayout : FlowLayout과 더불어 제일 많이 사용되는 Layout
 
                     일반적으로 IDE 툴 사용시 layout=null 상태에서
-        
+
                     화면 구성을 한 뒤 GridBagLayout으로 layout을
-        
+
                     변경하는 방식으로 많이 사용됨
-        
+
                     화면에 위치를 가장 자유롭게 구성할 수 있음
 
   - Layout 정책 적용 = JFrame class의 setLayout() 메소드 사용
@@ -410,7 +534,8 @@
 
 
 
-### 01/22
+
+01/22
 
 1. CallBack Method
 
@@ -432,7 +557,7 @@
 
   - 클래스 안에 클래스 정의
   - 내부 클래스 사용으로 인해 얻는 이점
-      : 내부클래스 안에서 외부 클래스 멤버변수에 접근이 가능
+   : 내부클래스 안에서 외부 클래스 멤버변수에 접근이 가능
 
   ex) class Outer {
 	class Inner {  
@@ -453,7 +578,7 @@
 
 
 
-### 01/23
+01/23
 
 
 1.  자바에서 I/O 클래스 사용
@@ -465,10 +590,10 @@
     대표 클래스
     InputStream   : 1byte 단위로 read, 추상화 클래스
     OutputStream : 1byte 단위로 write, 추상화 클래스
-    
+
     FileInputStream     :  1byte 단위로 파일에서 read
     FileOutputStream  :  1byte 단위로 파일에 write
-    
+
     BufferedInputStream    :  버퍼 기능 제공 
     BufferedOutputStream : 버퍼 기능 제공 
 
@@ -505,7 +630,8 @@
 
 
 
-### 01/24
+
+01/24
 
 1. 자바 I/O 클래스 -  character stream
 
@@ -538,13 +664,14 @@
       (2) 클라이언트 접속이 이루어지면 Socket 객체 생성
       => blocking method
 
-
+  
    - 클라이언트에서 종이컵(Socket) 생성방법
      Socket client  = new Socket("서버IP주소", 포트번호);
 
 
 
-### 01/25
+
+01/25
 
 1. polymorphism
 
@@ -563,9 +690,9 @@
   - 클래스 구성요소중 상속에 대상은 멤버변수 + 메소드(생성자 제외)
 
 4. class의 3가지 구성요소
-    (1) 멤버변수
-    (2) 메소드
-    (3) 생성자
+  (1) 멤버변수
+  (2) 메소드
+  (3) 생성자
 
 5. 생성자
   - 클래스가 객체화 될때 단한번 호출
@@ -576,7 +703,8 @@
 
 
 
-### 01/28
+
+01/28
 
 1. package / import
 
@@ -644,7 +772,7 @@
 
 
 
-### 01/29
+01/29
 
 1. Thread 왜쓰나? 특징은?
 
@@ -715,21 +843,20 @@
      기본적으로 열쇠는 하나만 존재하며 누구에게나 공유되어 있으나 하나의 Thread가 열쇠를 사용하여 블럭으로 진입 할 경우에는 다른 Thread에서는 열쇠를 획득할 수 없으므로 블럭내 진입이 불가능
 
     열쇠를 가지고 블럭내로 진입한 Thread가 작업 도중, cpu 제어권을 버리고 ready 상태로 가더라도 열쇠는 반환하지 않는다
-    
+
     기본적으로 synchronized 문법은 Thread 클래스가 아닌곳에서도 사용이 가능. Thread에 클래스의 run메소드에서만 사용되는 것이 아님에 유의할 것!!!!
 
    * 메소드에 synchronized 처리를 할경우는
       synchronized (this) 와 같은 기능을 하게 됨
 
    * sleep() 메소드 실행시에는 열쇠를 가지고 자러감!!
-
     (열쇠를 반납하지 않음) 
 
 
 
 
 
-### 01/30
+01/30
 
 1. Thread 동기화 처리로 인한 비공정성 문제 해결
 
@@ -763,7 +890,7 @@
       : 클라이언트의 접속을 지속적으로 대기 Thread 필요
       : n개의 client에서 보내오는 메시지 수신 - N 개의 Thread 필요
         -> 수신된 메시지를 (모든)n개의 클라이언트로 전송
-    
+     
     - Client Part
       : Server로 데이터 전송 - thread
       : Server에서 데이터 수신 - thread
@@ -788,7 +915,7 @@
 
 
 
-### 01/31
+01/31
 
 1. 멀티채팅 구현
    - UI focus 가져오기
@@ -798,7 +925,8 @@
 
 
 
-### 02/01
+
+02/01
 
 1. 멀티채팅 예외 처리
 
@@ -806,9 +934,9 @@
    - 서버 part
 
     : 클라이언트 종료시 해당 클라이언트를 담당하던 Thread에 대한 종료
-    
+
     : 종료된 클라이언트에 연결된 Socket(종이컵) 정리
-    
+
     : 동기화 처리(서버파트 Thread 공유자원 사용)
 
 
@@ -817,16 +945,16 @@
     : 종료 처리(프로그램 종료시 서버로 접속해제 메세지 전송)
 
 
-
+  
  * 자원해제 - Socket, I/O 클래스는 close() 메소드를 지원
 
  * 종이컵(Socket)에서 실 역할을 하는 I/O 클래스를 가져오면
-    모두 byteStream 계열이 넘어옴
+  모두 byteStream 계열이 넘어옴
 
    주고 받는 데이터가 모두 문자라는 전제가 주어진다면
-    CharacterStream 계열로 변경하여 사용하면 코드 작성을 
+  CharacterStream 계열로 변경하여 사용하면 코드 작성을 
    효율적으로 할 수 있게 됨.
-    ByteStream -> CharacterStream 변경을 위해 InputStreamReader 사용
+  ByteStream -> CharacterStream 변경을 위해 InputStreamReader 사용
 
  * InputStreamReader class
 
