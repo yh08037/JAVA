@@ -11,13 +11,16 @@
 ## 자바의 기본 문법 사항
 
 1. [HelloWorld.java](https://github.com/yh08037/JAVA/blob/master/notes/HelloWorld.md)
- : 자바의 helloworld 코드를 하나하나 뜯어보면서 자바 코드의 기본적인 구성에 대해 알아봅니다.
+
+&nbsp; &nbsp; &nbsp; &nbsp;자바의 helloworld 코드를 하나하나 뜯어보면서 자바 코드의 기본적인 구성에 대해 알아봅니다.
 
 2. [Add2.java](https://github.com/yh08037/JAVA/blob/master/notes/Add2.md)
- : 자바의 덧셈 프로그램을 분석하면서 `System.out.println()`에 대해 알아봅니다.
+
+&nbsp; &nbsp; &nbsp; &nbsp;: 자바의 덧셈 프로그램을 분석하면서 `System.out.println()`에 대해 알아봅니다.
 
 3. [static 키워드 : 정적 변수, 정적 메소드](https://github.com/yh08037/JAVA/blob/master/notes/static.md)
- : 자바의 main함수에 꼭 붙는 키워드인 `static`에 대해 알아봅니다.
+
+&nbsp; &nbsp; &nbsp; &nbsp;: 자바의 main함수에 꼭 붙는 키워드인 `static`에 대해 알아봅니다.
 
 <br>
 
