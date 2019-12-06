@@ -1,5 +1,13 @@
 # 자바 문법 연습
 
+자바의 기본적인 문법을 알아봅니다.
+
+더 나아가 자바의 가장 큰 특징인 객체지향형 패러다임에 대해 알아봅니다.
+
+또한, 자바의 UI를 통해 계산기 / 멀티 채팅 프로그램 등을 작성하여 봅니다.
+
+<br><br>
+
 ## 기본 문법 사항
 
 1. [HelloWorld.java](https://github.com/yh08037/JAVA/blob/master/notes/HelloWorld.md)
@@ -8,7 +16,9 @@
 
 3. [static 키워드 : 정적 변수, 정적 메소드](https://github.com/yh08037/JAVA/blob/master/notes/static.md)
 
-## 정리 노트
+<br><br>
+
+## OOP 정리 노트
 
 day1. [01/14 자바 개발 환경 구성](https://github.com/yh08037/JAVA/blob/master/notes/day1.md)
 
