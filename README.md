@@ -78,19 +78,20 @@
 
      : 특정 클래스 메모리에 올리는 문법
 
-      => Test t = new Test();
+      => `Test t = new Test();`
 
 
-* 컴퓨터 구조에서 CPU는 하드디스크에 있는 내용을
+* 컴퓨터 구조에서 CPU는 하드디스크에 있는 내용을 읽을 수 없음.  
 
-  읽을 수 없음.  RAM(메모리)에 있는 내용만 읽을 수 있음
+  RAM(메모리)에 있는 내용만 읽을 수 있음
   
   자바에서는 메모리에 변수나 메소드를 올려줄때 
   
-  해당 되는 변수,메소드가 포함된 클래스를 통채로 올려줌
+  해당 되는 변수, 메소드가 포함된 클래스를 통채로 올려줌
   
  - 객체(Object)는 무엇?
-    => 메모리에 올라간 클래스!!  
+
+	=> 메모리에 올라간 클래스!!  
 
 
 ### 2. static  
@@ -283,19 +284,24 @@
 ### 2. StringTokenizer class
 
 
-* 숫자 -> 문자열  :   숫자+""
+* 숫자 -> 문자열  :   숫자 + "~"
 
-  문자열 -> 숫자 
+* 문자열 -> 숫자 
 
-: 문자열 -> int 형으로
-  Integer.parseInt( "7" );
+	* 문자열 -> int 형으로
+  	```java
+	Integer.parseInt( "7" );
+	```
 
-: 문자열 -> double 형으로
-  Double.parseDouble("0.3");
-
-: 문자열 -> byte 형으로
-  Byte.parseByte("10");
-
+	* 문자열 -> double 형으로
+	``` java  
+  	Double.parseDouble("0.3");
+	```
+	
+	* 문자열 -> byte 형으로
+	``` java
+	Byte.parseByte("10");
+	```
 
 
 ### 3. method overriding
@@ -351,9 +357,7 @@ abstract public void add();
 ```
 
 #### 추상 클래스
-한 개 이상의 추상 메소드를 가지는 클래스
-
-객체화가 불가능하다.
+한 개 이상의 추상 메소드를 가지는 클래스 => 객체화가 불가능하다.
 
 추상 클래스를 상속받은 클래스에서는 추상 메소드 오버라이딩이 강제된다.
 
@@ -397,13 +401,13 @@ abstract public void add();
 
     GridBagLayout : FlowLayout과 더불어 제일 많이 사용되는 Layout
 
-                    일반적으로 IDE 툴 사용시 layout=null 상태에서
-        
-                    화면 구성을 한 뒤 GridBagLayout으로 layout을
-        
-                    변경하는 방식으로 많이 사용됨
-        
-                    화면에 위치를 가장 자유롭게 구성할 수 있음
+	    일반적으로 IDE 툴 사용시 layout=null 상태에서
+
+	    화면 구성을 한 뒤 GridBagLayout으로 layout을
+
+	    변경하는 방식으로 많이 사용됨
+
+	    화면에 위치를 가장 자유롭게 구성할 수 있음
 
   - Layout 정책 적용 = JFrame class의 setLayout() 메소드 사용
 
@@ -419,18 +423,18 @@ abstract public void add();
 
 ### 1. CallBack Method
 
-  : 프로그래머가 호출해 주지 않음!!!
-  : 시스템이 호출해 주는 메소드!!
-  : 그러나 구현은 프로그래머가 해줌!!
-  : 따라서 콜백메소드가 어떤 조건에서 호출되는지 파악할 것
+* 프로그래머가 호출해 주지 않음!!!
+* 시스템이 호출해 주는 메소드!!
+* 그러나 구현은 프로그래머가 해줌!!
+* 따라서 콜백메소드가 어떤 조건에서 호출되는지 파악할 것
 
 
 ### 2. 이벤트 처리(Event Handling)
 
-   : 대상이 되는 이벤트 결정 (XXXEvent class)
-   : 해당 이벤트를 감시해줄 감시자 결정 (XXXListener interface)
-   : 감시자 구현 => 이벤트 발생시 구동되어야 할 코드 구현
-   : 이벤트 대상 결정
+* 대상이 되는 이벤트 결정 (XXXEvent class)
+* 해당 이벤트를 감시해줄 감시자 결정 (XXXListener interface)
+* 감시자 구현 => 이벤트 발생시 구동되어야 할 코드 구현
+* 이벤트 대상 결정
 
 
 ### 3. inner class (내부 클래스)
@@ -442,8 +446,8 @@ abstract public void add();
 ``` java
   ex) class Outer {
 	class Inner {  
-                }
-       }
+        }
+      }
 ```
 
 
@@ -536,22 +540,23 @@ abstract public void add();
 
 ### 2. Network class 사용(TCP 기반)
 
-   - 자바에서 TCP 기반의 Network 통신을 위해서는
-    Socket(종이컵) 클래스가 필요
+   - 자바에서 TCP 기반의 Network 통신을 위해서는 Socket(종이컵) 클래스가 필요
 
    - 서버에서 종이컵(Socket) 생성방법
+      ``` java
       ServerSocekt ss = new ServerSocket(포트번호);
       Socket server = ss.accept(); 
-
-      accept() 메소드의 두 가지 기능 
+      ```
+      `accept()` 메소드의 두 가지 기능 
       (1) 클라이언트의 접속을 대기
-      (2) 클라이언트 접속이 이루어지면 Socket 객체 생성
+      (2) 클라이언트 접속이 이루어지면 `Socket` 객체 생성
       => blocking method
 
 
    - 클라이언트에서 종이컵(Socket) 생성방법
+     ``` java
      Socket client  = new Socket("서버IP주소", 포트번호);
-
+     ```
 
 <br><br>
 
@@ -601,12 +606,12 @@ abstract public void add();
   * import javax.??.?? ; 
 
     import에 있어 지정된 폴더는 다음 네 가지 위치에서 검색이 된다.
-
+```
   (1) 현재폴더
   (2) C:\Program Files\Java\jdk1.8.0_05\jre\lib\rt.jar //자바에서 제공되는 기본클래스
   (3) C:\Program Files\Java\jdk1.8.0_05\jre\lib\ext
   (4) classpath
-
+```
   주의 : 윈도우 환경변수의 classpath 설정도 가능하나
 
          classpath 설정시 꼭 현재폴더를 의미하는 "."를 추가해줄 것
@@ -701,7 +706,7 @@ abstract public void add();
 	public void run() {
               	      while( 변수 ) {}   //변수값을 사용해 제어
 	}
-~~~
+    ~~~
 
 ### 3. 동기화 문제? 해결법
 
@@ -718,13 +723,14 @@ abstract public void add();
   - 자바에서는 Thread 동기화 문제 해결을 위해 synchronized 문법을 제공함
 
    - synchronized 문법은 하나의 Thread가 동기화 문제 발생 코드에 접근할 경우 다른 Thread는 접근이 불가능하게 블럭
-~~~ java
-     synchronized( ? ) {
-             ....
-             ....
-     }
-~~~
-     ? = 동기화를 필요로 하는 공유자원(객체)
+	~~~ java
+	synchronized( ? ) {
+	     ....
+	     ....
+	}
+	
+	//? = 동기화를 필요로 하는 공유자원(객체)
+	~~~
 
      동기화 처리를 위한 방법 :  자바에서는 기본적으로 클래스에 보안을 위해 자물쇠 기능이 구현되어 있음. 디펄트로 자물쇠는 비활성화 상태임
      동기화(synchronized) 기능을 사용하여 클래스의 자물쇠를 활성화하게 되면 해당 블럭으로 진입하기 위해서는 자물쇠의 열쇠를 획득하여 진입하여야 함.
