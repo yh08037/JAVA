@@ -548,9 +548,12 @@ abstract public void add();
       Socket server = ss.accept(); 
       ```
       `accept()` 메소드의 두 가지 기능 
+
       (1) 클라이언트의 접속을 대기
+
       (2) 클라이언트 접속이 이루어지면 `Socket` 객체 생성
-      => blocking method
+
+       => blocking method
 
 
    - 클라이언트에서 종이컵(Socket) 생성방법
@@ -723,15 +726,13 @@ abstract public void add();
   - 자바에서는 Thread 동기화 문제 해결을 위해 synchronized 문법을 제공함
 
    - synchronized 문법은 하나의 Thread가 동기화 문제 발생 코드에 접근할 경우 다른 Thread는 접근이 불가능하게 블럭
-	~~~ java
-	synchronized( ? ) {
-	     ....
-	     ....
-	}
-	
-	//? = 동기화를 필요로 하는 공유자원(객체)
-	~~~
-
+``` java
+synchronized( ? ) {
+     ....
+     ....
+}
+```
+? = 동기화를 필요로 하는 공유자원(객체)
      동기화 처리를 위한 방법 :  자바에서는 기본적으로 클래스에 보안을 위해 자물쇠 기능이 구현되어 있음. 디펄트로 자물쇠는 비활성화 상태임
      동기화(synchronized) 기능을 사용하여 클래스의 자물쇠를 활성화하게 되면 해당 블럭으로 진입하기 위해서는 자물쇠의 열쇠를 획득하여 진입하여야 함.
 
