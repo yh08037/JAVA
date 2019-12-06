@@ -123,18 +123,18 @@
 
    : switch ~ case 문
 
-    ```java
+   ``` java
    int x = 10;
    
    switch( x ) {
-   	case 10:
-   		[10일 경우 실행]
-   		break;
+       case 10:
+           [10일 경우 실행]
+	   break;
        case 9:
            [9일 경우 실행]
            break;
    }
-    ```
+   ```
 
    
 
@@ -177,21 +177,25 @@
 
 
   * 정의방법
+  ```
     접근제한자   리턴형    메소드이름  ( 파라미터)  {
     }
-
+  ```
+``` java
   public  int  add(int x, int y) {
        int result = x + y;
        return result;   	//리턴형이 존재하는 경우 필수
   }
+```  
+ * 접근제한자 종류 (4가지)
+ 
+ 	`public  - protected - default - private`
 
- *접근제한자 종류 (4가지)
-  public  - protected - default - private
-
- *리턴형 종류
- - 기본자료형
- - Object
- - void : 리턴값이 없는경우
+ * 리턴형 종류
+ 
+ 	- 기본자료형
+ 	- Object
+ 	- void : 리턴값이 없는경우
 
 
 <br><br>
@@ -206,16 +210,18 @@
 
 
 ### 2. 자바의 3대 생략 요소
-
+```
  (1) extends Object
  (2) default Constructor
  (3) super()    - 모든 생성자의 첫번째 라인에 생략
-
+```
 
 ### 3. 클래스의 3가지 구성요소
-    (1) member variable
-    (2) method
-    (3) Constructor
+```
+ (1) member variable
+ (2) method
+ (3) Constructor
+```
 
 ### 4. 생성자(Constructor)
 
@@ -450,7 +456,7 @@
 ## 01/23 멀티채팅 프로그램 1
 
 
-###1.  자바에서 I/O 클래스 사용
+### 1.  자바에서 I/O 클래스 사용
 
   - 자바에 I/O(Input / Output) class는 크게 두 가지 부류 나뉨
 
@@ -469,13 +475,15 @@
 
 
 * 문자열 -> 바이트배열   
+  ``` java
   String str = "가나다";
   str.getBytes("euc-kr");
-
+```
 * 바이트배열 -> 문자열
+  ``` java
   byte[] b = new byte[1024];
   String msg = new String( b , "euc-kr" );  
-
+  ```
 * flush() : buffer 있는 데이터 지금 출력
   trim()  : 빈 공백 제거
 
@@ -679,10 +687,11 @@
     로직으로 해결 해줄 것
 
     ex: 
+    ~~~java
 	public void run() {
               	      while( 변수 ) {}   //변수값을 사용해 제어
 	}
-
+~~~
 
 ### 3. 동기화 문제? 해결법
 
@@ -699,12 +708,12 @@
   - 자바에서는 Thread 동기화 문제 해결을 위해 synchronized 문법을 제공함
 
    - synchronized 문법은 하나의 Thread가 동기화 문제 발생 코드에 접근할 경우 다른 Thread는 접근이 불가능하게 블럭
-
+~~~ java
      synchronized( ? ) {
              ....
              ....
      }
-
+~~~
      ? = 동기화를 필요로 하는 공유자원(객체)
 
      동기화 처리를 위한 방법 :  자바에서는 기본적으로 클래스에 보안을 위해 자물쇠 기능이 구현되어 있음. 디펄트로 자물쇠는 비활성화 상태임
