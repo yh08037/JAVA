@@ -16,11 +16,11 @@
 
 2. [Add2.java](https://github.com/yh08037/JAVA/blob/master/notes/Add2.md)
 
-&nbsp; &nbsp; &nbsp; &nbsp;: 자바의 덧셈 프로그램을 분석하면서 `System.out.println()`에 대해 알아봅니다.
+&nbsp; &nbsp; &nbsp; &nbsp;자바의 덧셈 프로그램을 분석하면서 `System.out.println()`에 대해 알아봅니다.
 
 3. [static 키워드 : 정적 변수, 정적 메소드](https://github.com/yh08037/JAVA/blob/master/notes/static.md)
 
-&nbsp; &nbsp; &nbsp; &nbsp;: 자바의 main함수에 꼭 붙는 키워드인 `static`에 대해 알아봅니다.
+&nbsp; &nbsp; &nbsp; &nbsp;자바의 main함수에 꼭 붙는 키워드인 `static`에 대해 알아봅니다.
 
 <br>
 
