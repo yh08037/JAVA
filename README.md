@@ -1,5 +1,13 @@
 # 자바 문법 연습
 
+## 기본 문법 사항
+
+1. [HelloWorld.java](https://github.com/yh08037/JAVA/blob/master/notes/HelloWorld.md)
+
+2. [Add2.java](https://github.com/yh08037/JAVA/blob/master/notes/Add2.md)
+
+3. [static 키워드 : 정적 변수, 정적 메소드](https://github.com/yh08037/JAVA/blob/master/notes/static.md)
+
 ## 정리 노트
 
 day1. [01/14 자바 개발 환경 구성](https://github.com/yh08037/JAVA/blob/master/notes/day1.md)
