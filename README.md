@@ -6,7 +6,7 @@
 
 또한, 자바의 UI를 통해 계산기 / 멀티 채팅 프로그램 등을 작성하여 봅니다.
 
-<br><br>
+<br>
 
 ## 기본 문법 사항
 
@@ -16,7 +16,7 @@
 
 3. [static 키워드 : 정적 변수, 정적 메소드](https://github.com/yh08037/JAVA/blob/master/notes/static.md)
 
-<br><br>
+<br>
 
 ## OOP 정리 노트
 
